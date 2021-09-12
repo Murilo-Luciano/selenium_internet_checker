@@ -20,13 +20,18 @@ def get_internet_value():
         try:
             velocity_value = driver.find_element_by_class_name(
                 'speed-results-container.succeeded').text
+
+            velocity_unit = driver.find_element_by_class_name(
+                'speed-units-container.succeeded').text
+
             element_found = True
         except NoSuchElementException:
             element_found = False
 
     driver.close()
     spinner.stop()
-    print(colored('Download speed', 'green') + ' ➤ ' + velocity_value + 'Mbps')
+    print(colored('Download speed', 'green') +
+          ' ➤ ' + velocity_value + velocity_unit)
 
 
 get_internet_value()
